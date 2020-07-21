@@ -1,12 +1,19 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
     private int capacity;
     private ArrayList<Book> bookStock;
+    private HashMap<String, Integer> genres;
 
     public Library(int capacity){
         this.capacity = capacity;
         this.bookStock = new ArrayList<Book>();
+        this.genres = new HashMap<String, Integer>();
+    }
+
+    public void addToGenres(Book bookGenre){
+        this.genres.put(bookGenre.getGenre(), 1);
     }
 
     public int getStockCount(){
