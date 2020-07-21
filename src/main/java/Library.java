@@ -13,12 +13,31 @@ public class Library {
         return this.bookStock.size();
     }
 
-    public String addBook(Book book){
+    public String addBook(Book newBook){
         if(getStockCount() < this.capacity){
-            this.bookStock.add(book);
+            this.bookStock.add(newBook);
             return "Book added successfully";
         }else
             return "Stock full";
+    }
+
+    public Boolean checkIfBookInStock(Book bookToCheck){
+        for(Book book : this.bookStock){
+            if(book == bookToCheck) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public Book lendBook(Book bookToLend) {
+        if(checkIfBookInStock(bookToLend) == true){
+            int index = this.bookStock.indexOf(bookToLend);
+            this.bookStock.remove(index);
+            return bookToLend;
+        }else
+            return null;
     }
 
 }
